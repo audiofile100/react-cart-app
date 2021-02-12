@@ -1,0 +1,30 @@
+Feb. 01
+// Upon MakePayment Click
+// Save the cart to RecentOrders collection (should have userid, cart, dateTime)
+// Make API to Save and Fetch from RecentOrders
+// Make a component RecentOrders to Show all previous Orders of current user
+// Add a button to Cancel (like) we have remove in CartComponent and then save again, 
+// order can be cancelled within 2 days after that it should be marked delivered
+
+Feb. 03
+// Upon Cancel Click
+// Save the order to CancelledOrders collection (should have userid, cancelled, dateTime)
+// Make API to Save and Fetch from CancelledOrders
+// Make a component CancelledOrders to Show all cancelled Orders of current user in Latest First
+// Add a button to Buy Again, (also show a message - This offer is much more exciting)
+// Upon Adding this should get appended to the existing Cart that is shown in Carts App
+
+Feb. 08
+// NewCart Implementation
+// Create New Cart Component using react hooks and in functional
+// Each Item in this component should be added from Product Component 
+// Now each Product should have general fields, like Name, Description, Rating, Price, Category (New Product Document/ Collection)
+// In Product component each item when we click to display details should also have a button "Add To Item" on click should add to New Cart
+// On Cart Component, Button for save to Checkout should save the cart item to database (New Cart Document/ Collection)
+
+Feb. 12
+// Review Page
+// This should get its reviews from recent orders page
+// User should be allowed to give ratings and his comments 
+// Upon succeful submission each product should have a link to show its review 
+// When user expands product detail we should also see the button to which will take us to its review
