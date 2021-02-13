@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import DisplayDetailsUsingHook from './DisplayDetailsUsingHooks';
-import {fetchProducts} from '../../State/Action';
+import {fetchProducts, fetchReviews} from '../../State/Action';
 
 let DisplayProductsComponent = (props) => {
 
@@ -9,6 +9,7 @@ let DisplayProductsComponent = (props) => {
     let dispatchGetProducts = useDispatch();
     
     products.length < 1 ? dispatchGetProducts(fetchProducts()) : "";
+
 
     return(
         <div>

@@ -1,17 +1,33 @@
 import React, {Component} from 'react';
+import {useSelector, useDispatch} from "react-redux";
+import {fetchReviews} from '../../State/Action';
+import DisplayReviewHooks from '../Popups/DisplayReviewHooks';
 
-class ProductReviewsPopup extends Component {
+let ProductReviewsPopup = (props) => {
+    let id = props.productid;
+   
+    let reviews = useSelector((state) => state.review.reviews);
+    let dispatchGetReviews = useDispatch();
+    
+    reviews.length < 1 ? dispatchGetReviews(fetchReviews(id)) : "";
 
-    render() {
-        return(
-            <div className="popup">
-                <div className="popup_inner">
-                    <h1>{this.props.text}</h1>
-                    <button onClick={this.props.closePopup}>Close</button>
-                </div>
+    console.log("FETCH REVIEWS ", reviews);
+
+    return(
+        <div className="popup">
+            <div className="popup_inner">
+                { reviews.length >= 1 ?
+                reviews.map((review) => {
+                    if (review.productid == id) {
+                        return <DisplayReviewHooks review={review} key={review._id} />;
+                    }
+                })
+                : <p>no reviews yet</p>
+                }
+                <button onClick={props.toggle}>Close</button>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default ProductReviewsPopup;

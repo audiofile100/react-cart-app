@@ -45,7 +45,7 @@ let DisplayDetailsUsingHook = (props)=>{
                 </li>
             </ul>
             {showPopup ?
-            <ProductReviewsPopup closePopup={showHideProductReviews} />
+            <ProductReviewsPopup toggle={(e) => showHideProductReviews(e)} productid={product._id} />
             :
             ""}
         </React.Fragment>

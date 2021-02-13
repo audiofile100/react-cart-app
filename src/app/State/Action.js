@@ -269,6 +269,8 @@ export const removeOrder = (orderObj) => {
     }
 };
 
+// cancellations
+
 export const saveCancel = (orderObj) => {
     return function(dispatch) {
         let date = new Date();
@@ -348,3 +350,24 @@ export const addCancel = (orderObj) => {
         })
     }
 }
+
+// reviews
+
+export const fetchReviews = () => ({
+    type: ActionTypes.FETCH_REVIEW,
+    payload: {
+        promise: new Promise((resolve, reject) => {
+            fetch("http://localhost:9090/api/getReviews/", {
+                method: 'GET'
+            })
+            .then (response => response.json(), err => console.log("ERROR fetchReviews"))
+            .then (responseReviews => {
+                console.log("fetchReviews-responseReviews " + responseReviews);
+                resolve(responseReviews);
+            })
+            .catch(err => {
+                reject(err);
+            })
+        })
+    }
+});

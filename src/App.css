@@ -3163,4 +3163,14 @@ select.stack {
     margin: auto;
     border-radius: 10px;
     background: rgb(210, 231, 247);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.review {
+    margin: 20px;
+    padding: 10px;
+    border: 0.5px solid black;
+    border-radius: 8px;
 }

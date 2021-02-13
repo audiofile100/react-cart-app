@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
 import DisplayProductComponent from '../../Components/Product/DisplayProductComponent';
-import {fetchProducts} from '../../State/Action';
+import {fetchProducts, fetchReviews} from '../../State/Action';
 
 //to subscribe we need to have - mapstatetoprops
 let mapStateToProps = (state)=>{ //we get the whole store object
     return {
-        products : state.product.products       
+        products : state.product.products     
     }
 }
 

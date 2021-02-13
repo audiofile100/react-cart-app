@@ -8,6 +8,7 @@ import product from './app/State/ProductReducer';
 import cart from './app/State/CartReducer';
 import order from './app/State/OrderReducer';
 import cancel from './app/State/CancelReducer';
+import review from './app/State/ReviewReducer';
 
 let myLogger = () => (next) => (action) => {
     next(action);
@@ -21,7 +22,8 @@ export default createStore(
             product,
             cart,
             order,
-            cancel
+            cancel,
+            review
         }
     ),
     {},
