@@ -26,8 +26,13 @@ export default class Order extends Component {
         this.props.saveCancel(orderObj);
     }
 
-    TogglePopup() {
+    DisplayPopup(item) {
+        console.log("ITEM", item);
         this.setState({ showPopup: !this.state.showPopup });
+    }
+
+    Dismiss() {
+        this.setState({showPopup: !this.state.showPopup });
     }
 
     render() {
@@ -71,7 +76,7 @@ export default class Order extends Component {
                                                                     <td>{item.qty}</td>
                                                                     <td>{item.price}</td>
                                                                     <td>
-                                                                        <button onClick={this.TogglePopup.bind(this)}>
+                                                                        <button onClick={() => this.DisplayPopup(item)}>
                                                                             Review
                                                                         </button>
                                                                     </td>
@@ -95,7 +100,7 @@ export default class Order extends Component {
                     }
                 </div>
                 {this.state.showPopup ?
-                <AddReviewPopup closePopup={this.TogglePopup.bind(this)} />
+                <AddReviewPopup closePopup={this.Dismiss.bind(this)} />
                 :
                 ""}
             </section>
