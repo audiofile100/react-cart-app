@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ProductReviewsPopup from '../Popups/ProductReviewsPopup';
 import {useSelector, useDispatch} from "react-redux";
-import {fetchReviews} from '../../State/Action';
+import {addItemToCart, fetchReviews} from '../../State/Action';
 
 let DisplayDetailsUsingHook = (props)=>{
     let product = props.product;
@@ -25,9 +25,17 @@ let DisplayDetailsUsingHook = (props)=>{
         dispatchGetReviews(fetchReviews(product._id));
     }
 
+    let dispatchAddProduct = useDispatch();
+
     const addProductToCart = (e) => {
         e.stopPropagation();
-        alert("todo");
+        let item = {
+            "id" : product._id,
+            "name" : product.name,
+            "price" : product.price,
+            "qty" : 1
+        }
+        dispatchAddProduct(addItemToCart(item));
     }
 
     return(

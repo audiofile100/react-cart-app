@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import CancelComponent from '../../Components/Cancel/CancelComponent';
-import {addCancel, fetchCancels, removeCancel} from '../../State/Action';
+import {addCancel, addItemToCart, fetchCancels, removeCancel, saveItemsForCheckout} from '../../State/Action';
 
 const mapStateToProps = (state) => {
     return {
@@ -19,6 +19,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         addCancel: (orderObj) => {
             dispatch(addCancel(orderObj));
+        },
+        updateCart: (cartObj) => {
+            dispatch(addItemToCart(cartObj));
         }
     }
 }

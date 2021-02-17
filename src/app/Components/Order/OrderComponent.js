@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import OrderItemComponent from '../Order/OrderItemComponent';
-import AddReviewPopup from '../Popups/AddReviewPopup';
 
 export default class Order extends Component {
 
@@ -19,15 +18,6 @@ export default class Order extends Component {
 
     componentDidMount() {
         this.props.fetchOrders();
-    }
-
-    CancelOrder(orderObj) {
-        this.props.removeOrder(orderObj);
-        this.props.saveCancel(orderObj);
-    }
-
-    SubmitReviewClick() {
-        alert("clicked");
     }
 
     render() {
@@ -51,7 +41,10 @@ export default class Order extends Component {
                             <tbody>
                                 {
                                     this.state.orders.map (order => (
-                                        <OrderItemComponent order={order} key={order._id} saveReview={this.props.saveReview} />
+                                        <OrderItemComponent order={order} key={order._id} 
+                                            saveReview={this.props.saveReview} 
+                                            removeOrder={this.props.removeOrder} 
+                                            saveCancel={this.props.saveCancel} />
                                     ))
                                 }
                             </tbody>

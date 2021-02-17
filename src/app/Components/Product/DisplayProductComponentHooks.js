@@ -10,13 +10,12 @@ let DisplayProductsComponent = (props) => {
     
     products.length < 1 ? dispatchGetProducts(fetchProducts()) : "";
 
-
     return(
         <div>
             {
                 products.length >= 1 ?
                 products.map((product)=>{
-                    return <DisplayDetailsUsingHook product={product} key={product._id}/>;
+                    return <DisplayDetailsUsingHook product={product} key={product._id} />;
                 })
                 :
                 <p>No Products to display</p>    

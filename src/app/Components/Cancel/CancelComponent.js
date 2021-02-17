@@ -20,8 +20,14 @@ export default class Cancel extends Component {
     }
 
     AddToOrders(orderObj) {
-        this.props.removeCancel(orderObj);
-        this.props.addCancel(orderObj);
+        console.log(orderObj);
+        if (orderObj.cart.length > 0) {
+            orderObj.cart.map((item) => {
+                this.props.updateCart(item);
+            });
+        }
+        //this.props.removeCancel(orderObj);
+        //this.props.addCancel(orderObj);
     }
 
     render() {

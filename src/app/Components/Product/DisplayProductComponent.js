@@ -15,6 +15,8 @@ export default class DisplayProductsComponent extends React.Component{
 
     render(){
         let products = this.props.products;
+        console.log("DISPLAY PROD COMP");
+        console.log(this.props);
         return(
             <div>
                 {
@@ -30,7 +32,7 @@ export default class DisplayProductsComponent extends React.Component{
                 {
                     products.length >= 1 ?
                     products.map((product)=>{
-                        return <DisplayDetailsUsingHook product={product} key={product._id}/>;
+                        return <DisplayDetailsUsingHook product={product} key={product._id} />;
                     })
                     :
                     <p>No Products to display</p>    

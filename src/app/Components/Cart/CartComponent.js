@@ -3,7 +3,8 @@ import CartListComponent from "../../Containers/Cart/CartListContainer";
 import CartSummaryComponent from "../../Containers/Cart/CartSummaryContainer";
 
 //as there are no dynamic changes required in this parent so keeping it as functional component
-export default function CartComponent(props){    
+export default function CartComponent(props){
+    
     return(
         <div className="cartComponent">
             <h2>SynergisticIT Shopping Cart To Add Items</h2>
