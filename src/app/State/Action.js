@@ -353,11 +353,11 @@ export const addCancel = (orderObj) => {
 
 // reviews
 
-export const fetchReviews = () => ({
+export const fetchReviews = (id) => ({
     type: ActionTypes.FETCH_REVIEW,
     payload: {
         promise: new Promise((resolve, reject) => {
-            fetch("http://localhost:9090/api/getReviews/", {
+            fetch("http://localhost:9090/api/getReviews/" + id, {
                 method: 'GET'
             })
             .then (response => response.json(), err => console.log("ERROR fetchReviews"))
@@ -371,3 +371,23 @@ export const fetchReviews = () => ({
         })
     }
 });
+
+export const saveReview = (reviewObj) => {
+    return function(dispatch) {
+        window.fetch("http://localhost:9090/api/saveReview", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reviewObj)
+        })
+        .then (res => res.json())
+        .then (resReview => {
+            console.log("saveReview-response", resReview);
+        })
+        .catch((err) => {
+            console.log("ERROR saving review");
+        })
+    }
+} 

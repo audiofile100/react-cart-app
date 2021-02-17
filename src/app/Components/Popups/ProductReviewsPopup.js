@@ -5,11 +5,12 @@ import DisplayReviewHooks from '../Popups/DisplayReviewHooks';
 
 let ProductReviewsPopup = (props) => {
     let id = props.productid;
+    let reviews = props.reviews;
    
-    let reviews = useSelector((state) => state.review.reviews);
-    let dispatchGetReviews = useDispatch();
+    // let reviews = useSelector((state) => state.review.reviews);
+    // let dispatchGetReviews = useDispatch();
     
-    reviews.length < 1 ? dispatchGetReviews(fetchReviews(id)) : "";
+    // reviews.length < 1 ? dispatchGetReviews(fetchReviews(id)) : "";
 
     console.log("FETCH REVIEWS ", reviews);
 

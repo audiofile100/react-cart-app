@@ -6,8 +6,11 @@ class AddReviewPopup extends Component {
         super();
         this.state = {
             displayname: "",
+            title: "",
             review: "",
             rating: "",
+            item: props.item,
+            uid: props.uid
         }
     }
 
@@ -21,6 +24,10 @@ class AddReviewPopup extends Component {
             this.setState({
                 displayname:typedValue
             })
+        } else if (classlist.indexOf("title")>=0) {
+            this.setState({
+                title: typedValue
+            })
         } else if(classlist.indexOf("review")>=0) {
             this.setState({
                 review:typedValue
@@ -33,16 +40,26 @@ class AddReviewPopup extends Component {
     }
 
     submitReview = () => {
-        console.log(this.state);
+        let reviewObj = {
+            "productid" : this.state.item.id,
+            "userid" : this.state.uid,
+            "title" : this.state.title,
+            "review" : this.state.review,
+            "rating" : this.state.rating
+        }
+        this.props.saveReview(reviewObj);
+        this.props.closePopup();
     }
 
     render () {
         return (
+            <td>
             <div className="popup">
                 <div className="popup_inner">
                     <h5>Enter your reviews</h5>
                     <input type="text" className="form-control col-md-6 displayname" placeholder="Name/Alias (optional)" value={this.state.displayname} onChange={this.onChangeText}/>
-                    <textarea className="form-control col-md-10 review" rows="10" value={this.state.review} onChange={this.onChangeText} ></textarea>
+                    <input type="text" className="form-control col-md-6 title" placeholder="title" value={this.state.title} onChange={this.onChangeText}/>
+                    <textarea className="form-control col-md-10 review" rows="8" value={this.state.review} onChange={this.onChangeText} ></textarea>
                     <p>Rating</p>
                     <input type="number" min="1" max="5" className="form-control col-md-2 rating" value={this.state.rating} onChange={this.onChangeText} />
                     <br/>
@@ -50,6 +67,7 @@ class AddReviewPopup extends Component {
                     <button onClick={this.submitReview}>Submit</button>
                 </div>
             </div>
+            </td>
         )
     }
 }

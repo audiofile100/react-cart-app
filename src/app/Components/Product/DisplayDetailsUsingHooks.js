@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import ProductReviewsPopup from '../Popups/ProductReviewsPopup';
+import {useSelector, useDispatch} from "react-redux";
+import {fetchReviews} from '../../State/Action';
 
 let DisplayDetailsUsingHook = (props)=>{
     let product = props.product;
@@ -14,10 +16,13 @@ let DisplayDetailsUsingHook = (props)=>{
         showHideDetails(!showDetails)
     }
 
+    let reviews = useSelector((state) => state.review.reviews);
+    let dispatchGetReviews = useDispatch();
+
     const showHideProductReviews = (e) => {
         e.stopPropagation();
-        //alert("clicked reviews button");
-        showHidePopup(!showPopup)
+        showHidePopup(!showPopup);
+        dispatchGetReviews(fetchReviews(product._id));
     }
 
     const addProductToCart = (e) => {
@@ -45,7 +50,7 @@ let DisplayDetailsUsingHook = (props)=>{
                 </li>
             </ul>
             {showPopup ?
-            <ProductReviewsPopup toggle={(e) => showHideProductReviews(e)} productid={product._id} />
+            <ProductReviewsPopup toggle={(e) => showHideProductReviews(e)} productid={product._id} reviews={reviews} />
             :
             ""}
         </React.Fragment>

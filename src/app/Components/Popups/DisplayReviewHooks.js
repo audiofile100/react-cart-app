@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 
 let DisplayReviewHooks = (props)=>{
-    let review = props.review;
 
+    let review = props.review;
+    
     return(
         <div>
             <div className={"review"}>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import OrderItemComponent from '../Order/OrderItemComponent';
 import AddReviewPopup from '../Popups/AddReviewPopup';
 
 export default class Order extends Component {
@@ -6,8 +7,7 @@ export default class Order extends Component {
     constructor(props) {
         super();
         this.state = {
-            orders: props.orders.orders,
-            showPopup: false
+            orders: props.orders.orders
         }
     }
 
@@ -26,13 +26,8 @@ export default class Order extends Component {
         this.props.saveCancel(orderObj);
     }
 
-    DisplayPopup(item) {
-        console.log("ITEM", item);
-        this.setState({ showPopup: !this.state.showPopup });
-    }
-
-    Dismiss() {
-        this.setState({showPopup: !this.state.showPopup });
+    SubmitReviewClick() {
+        alert("clicked");
     }
 
     render() {
@@ -56,53 +51,13 @@ export default class Order extends Component {
                             <tbody>
                                 {
                                     this.state.orders.map (order => (
-                                        <tr key={order._id}>
-                                            <td>{order.userid}</td>
-                                            <td colSpan={1}>
-                                                <table>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>items</th>
-                                                            <th>qty</th>
-                                                            <th>price</th>
-                                                            <th>review</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            order.cart.map (item => (
-                                                                <tr key={item.id}>
-                                                                    <td>{item.name}</td>
-                                                                    <td>{item.qty}</td>
-                                                                    <td>{item.price}</td>
-                                                                    <td>
-                                                                        <button onClick={() => this.DisplayPopup(item)}>
-                                                                            Review
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            ))
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td>{order.date}</td>
-                                            <td>
-                                                <button onClick={() => this.CancelOrder(order)}>
-                                                    Cancel
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <OrderItemComponent order={order} key={order._id} saveReview={this.props.saveReview} />
                                     ))
                                 }
                             </tbody>
                         </table>
                     }
                 </div>
-                {this.state.showPopup ?
-                <AddReviewPopup closePopup={this.Dismiss.bind(this)} />
-                :
-                ""}
             </section>
         )
     }
