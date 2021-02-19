@@ -75,7 +75,10 @@ export default class OrderItemComponent extends React.Component {
                     </button>
                 </td>
                 {this.state.showPopup ?
-                <AddReviewPopup closePopup={this.Dismiss.bind(this)} item={this.state.item} uid={order.userid} saveReview={this.props.saveReview} />
+                <AddReviewPopup closePopup={this.Dismiss.bind(this)} 
+                                item={this.state.item} 
+                                uid={order.userid} 
+                                saveReview={this.props.saveReview}  />
                 :
                 <td></td>}
             </tr>

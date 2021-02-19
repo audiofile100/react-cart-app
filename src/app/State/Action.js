@@ -372,6 +372,25 @@ export const fetchReviews = (id) => ({
     }
 });
 
+export const fetchMyReview = (uid, pid) => ({
+    type: ActionTypes.FETCH_REVIEW,
+    payload: {
+        promise: new Promise((resolve, reject) => {
+            fetch("http://localhost:9090/api/getMyReview/" + uid + "/" + pid, {
+                method: 'GET'
+            })
+            .then (response => response.json(), err => console.log("ERROR fetchMyReview"))
+            .then (responseReviews => {
+                console.log("fetchMyReview-responseReviews " + responseReviews);
+                resolve(responseReviews);
+            })
+            .catch(err => {
+                reject(err);
+            })
+        })
+    }
+});
+
 export const saveReview = (reviewObj) => {
     return function(dispatch) {
         window.fetch("http://localhost:9090/api/saveReview", {

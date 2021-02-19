@@ -3174,3 +3174,7 @@ select.stack {
     border: 0.5px solid black;
     border-radius: 8px;
 }
+
+.logout {
+    float: right;
+}

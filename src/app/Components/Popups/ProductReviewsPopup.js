@@ -8,8 +8,11 @@ let ProductReviewsPopup = (props) => {
     let reviews = props.reviews;
    
     // let reviews = useSelector((state) => state.review.reviews);
-    // let dispatchGetReviews = useDispatch();
+    let dispatchGetReviews = useDispatch();
     
+    if (reviews == null) {
+        dispatchGetReviews(fetchReviews(id));
+    }
     // reviews.length < 1 ? dispatchGetReviews(fetchReviews(id)) : "";
 
     console.log("FETCH REVIEWS ", reviews);
