@@ -1,7 +1,7 @@
 "use-strict";
 
 import React,{useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import DisplayProductHooks from './DisplayProductComponentHooks';
 import {saveProduct} from '../../State/Action';
 
@@ -14,7 +14,8 @@ let ProductHooks = (props) => {
     const [display, setDisplay] = useState("Initial Display");
     const [ram, setRam] = useState("Initial RAM");
 
-    
+    let user = useSelector((state) => state.user.user);
+
     let dispatchProduct = useDispatch(); // using this hook to dispatch the addCouponToStore action : publisher
     
     let saveProductClick = ()=>{           
@@ -39,41 +40,24 @@ let ProductHooks = (props) => {
 
         if(classlist.indexOf("pname")>=0){
             setName(target.value)
-            // this.setState({
-            //     name: target.value
-            // })
         }else if(classlist.indexOf("price")>=0){
             setPrice(target.value)
-            // this.setState({
-            //     price: parseInt(target.value)
-            // })
         }else if(classlist.indexOf("camera")>=0){
             setCamera(target.value)
-            // this.setState({
-            //     camera: target.value
-            // })
         }else if(classlist.indexOf("color")>=0){
             setColor(target.value)
-            // this.setState({
-            //     color: target.value
-            // })
         }
         else if(classlist.indexOf("display")>=0){
             setDisplay(target.value)
-            // this.setState({
-            //     display: target.value
-            // })
         }
         else{
             setRam(target.value)
-            // this.setState({
-            //     ram: target.value
-            // })    
         }
     }
 
     return(
         <section className={"componentClass"}>
+            { user.userName != "" && user.userName === "admin" ? 
             <div className="form col-md-8">
                 <div className="col-md-12">
                     <b>Product Name</b>
@@ -121,7 +105,8 @@ let ProductHooks = (props) => {
                 
                 <input type="button" className={"btn btn-primary col-md-3"} value={"Save Product"} onClick={saveProductClick}/>
             </div>
-            
+            :
+            <br/> }
             <br/>
             <DisplayProductHooks/>
         </section>

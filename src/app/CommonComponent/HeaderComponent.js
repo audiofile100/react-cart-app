@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {PropTypes} from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { BsFillBellFill } from 'react-icons/bs';
+
+import DisplayNotificationHooks from '../Components/Notification/DisplayNotificationHooks';
 
 let Header = (props) => {
     let userName = props.user && props.user.userName ? props.user.userName : "";
+    const [showNotifications, showHideNotifications] = useState(false);
+
+    let logoutUser = () => {
+        userName = "";
+        window.location.href = "http://localhost:9092/home"
+    }
+
+    const notifications = (e) => {
+        e.stopPropagation();
+        showHideNotifications(!showNotifications);
+    }
 
     return(
         <div className="col-md-12">
@@ -29,7 +43,12 @@ let Header = (props) => {
                     {/* <NavLink to="/coupon" className="button" activeClassName="success" >Coupon </NavLink> 
                     <NavLink to="/about" className="button" activeClassName="success">About  </NavLink> */}
                     <NavLink to="/hobby" className="button" activeClassName="success">Hobby</NavLink>
-                    <div className="logout"><NavLink to="/home" className="button" activeClassName="success" >Logout </NavLink></div>
+                    <BsFillBellFill className="notification_icon" onClick={(e) => notifications(e)} />
+                    { showNotifications ? 
+                    <DisplayNotificationHooks toggle={(e) => notifications(e)} />
+                    : ""
+                    }
+                    <input type="button" className={"logout button"} value={"Logout"} onClick={logoutUser} />
                 </React.Fragment>}
             </div>
          </div>
