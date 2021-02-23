@@ -3144,8 +3144,8 @@ select.stack {
 /*popup style*/
 .popup {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     top: 0;
     left: 0;
     right: 0;
@@ -3156,14 +3156,13 @@ select.stack {
 
 .popup_inner {
     position: absolute;
-    left: 25%;
-    right: 25%;
-    top: 25%;
-    bottom: 25%;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
     margin: auto;
     border-radius: 10px;
     background: rgb(210, 231, 247);
-
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -3180,8 +3179,8 @@ select.stack {
 }
 
 .notification_icon {
-    margin-top: 5px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-right: 20px;
 }
 
 .notification {

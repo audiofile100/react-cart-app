@@ -20,6 +20,14 @@ let Header = (props) => {
         showHideNotifications(!showNotifications);
     }
 
+    const handleOutsideClick = () => {
+        if (showNotifications === true) {
+            showHideNotifications(!showNotifications);
+        }
+    }
+
+    document.addEventListener("click", handleOutsideClick);
+
     return(
         <div className="col-md-12">
             <div>
@@ -43,12 +51,13 @@ let Header = (props) => {
                     {/* <NavLink to="/coupon" className="button" activeClassName="success" >Coupon </NavLink> 
                     <NavLink to="/about" className="button" activeClassName="success">About  </NavLink> */}
                     <NavLink to="/hobby" className="button" activeClassName="success">Hobby</NavLink>
-                    <BsFillBellFill className="notification_icon" onClick={(e) => notifications(e)} />
                     { showNotifications ? 
-                    <DisplayNotificationHooks toggle={(e) => notifications(e)} />
+                    <DisplayNotificationHooks />
                     : ""
                     }
-                    <input type="button" className={"logout button"} value={"Logout"} onClick={logoutUser} />
+                    <div className="logout"><BsFillBellFill className="notification_icon" onClick={(e) => notifications(e)} />
+                        <input type="button" className={"button"} value={"Logout"} onClick={logoutUser} />
+                    </div>
                 </React.Fragment>}
             </div>
          </div>

@@ -28,7 +28,6 @@ let ProductReviewsPopup = (props) => {
                 })
                 : <p>no reviews yet</p>
                 }
-                <button onClick={props.toggle}>Close</button>
             </div>
         </div>
     )

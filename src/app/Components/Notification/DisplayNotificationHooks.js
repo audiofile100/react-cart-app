@@ -7,7 +7,6 @@ let NotificationComponentHooks = (props) => {
         <div className="notification">
             <div className="notification_inner">
                 <h5>Notification</h5>
-                <button onClick={props.toggle}>Close</button>
             </div>
         </div>
     )
