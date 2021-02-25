@@ -419,6 +419,7 @@ optgroup {
 }
 
 .product{
+  width: 75%;
   cursor: pointer;
   background-color: #dbf8cf;
 }
@@ -3186,23 +3187,51 @@ select.stack {
 .notification {
     position: fixed;
     width: 15%;
-    height: 100%;
+    height: 40%;
     float: right;
     top: 10%;
     right: 0;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .notification_inner {
     position: absolute;
     left: 2%;
     right: 7%;
-    top: 1%;
-    bottom: 42%;
+    top: 0%;
+    bottom: 0%;
     margin: auto;
     border-radius: 10px;
-    background: rgb(255, 134, 194);
+    background: rgb(255, 255, 255, 0);
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.notification_card {
+    border: 1px solid;
+    border-color: aliceblue;
+    background: rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+}
+
+.notification_title {
+    margin: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.notification_description {
+    margin: 4px;
+    font-size: 0.78em;
+}
+
+.badge {
+    border-radius: 100%;
+    background: aqua;
+    position: relative;
+    left: -20px;
+    top: -15px;
+    padding: 5px;
+    width: 25px;
 }

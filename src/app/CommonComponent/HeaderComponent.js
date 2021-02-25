@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {PropTypes} from 'prop-types';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { BsFillBellFill } from 'react-icons/bs';
 
@@ -9,6 +9,9 @@ import DisplayNotificationHooks from '../Components/Notification/DisplayNotifica
 let Header = (props) => {
     let userName = props.user && props.user.userName ? props.user.userName : "";
     const [showNotifications, showHideNotifications] = useState(false);
+    let [count, updateCount] = useState(5);
+
+    const history = useHistory();
 
     let logoutUser = () => {
         userName = "";
@@ -20,13 +23,32 @@ let Header = (props) => {
         showHideNotifications(!showNotifications);
     }
 
-    const handleOutsideClick = () => {
-        if (showNotifications === true) {
-            showHideNotifications(!showNotifications);
-        }
+    const handleNotificationClick = (e) => {
+        e.stopPropagation();
+        updateCount(--count);
     }
 
-    document.addEventListener("click", handleOutsideClick);
+    const cardClick = (title) => {
+        if (count > 0)
+            updateCount(--count);
+        switch (title) {
+            case "Add Product":
+                history.push('/product');
+                break;
+            case "Add Item":
+                history.push('/cart');
+                break;
+            case "Review Cart":
+                history.push('/cart');
+                break;
+            case "Payments":
+                history.push('/cart');
+                break;
+            case "Cancelling Orders":
+                history.push('/order');
+                break;
+        }
+    }
 
     return(
         <div className="col-md-12">
@@ -52,10 +74,12 @@ let Header = (props) => {
                     <NavLink to="/about" className="button" activeClassName="success">About  </NavLink> */}
                     <NavLink to="/hobby" className="button" activeClassName="success">Hobby</NavLink>
                     { showNotifications ? 
-                    <DisplayNotificationHooks />
+                    <DisplayNotificationHooks toggle={notifications} clickedCard={cardClick}/>
                     : ""
                     }
-                    <div className="logout"><BsFillBellFill className="notification_icon" onClick={(e) => notifications(e)} />
+                    <div className="logout">
+                        <BsFillBellFill className="notification_icon" onClick={notifications} />
+                        <span className={"badge"} onClick={handleNotificationClick}>{count}</span>
                         <input type="button" className={"button"} value={"Logout"} onClick={logoutUser} />
                     </div>
                 </React.Fragment>}

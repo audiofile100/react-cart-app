@@ -38,14 +38,6 @@ let DisplayDetailsUsingHook = (props)=>{
         dispatchAddProduct(addItemToCart(item));
     }
 
-    const handleOutsideClick = () => {
-        if (showPopup === true) {
-            showHidePopup(!showPopup);
-        }
-    }
-
-    document.addEventListener("click", handleOutsideClick);
-
     return(
         <React.Fragment>
             <ul className={"product"}>
@@ -66,7 +58,7 @@ let DisplayDetailsUsingHook = (props)=>{
                 </li>
             </ul>
             {showPopup ?
-            <ProductReviewsPopup productid={product._id} reviews={reviews} />
+            <ProductReviewsPopup productid={product._id} reviews={reviews} toggle={showHideProductReviews} />
             :
             ""}
         </React.Fragment>
