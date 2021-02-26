@@ -3186,10 +3186,9 @@ select.stack {
 
 .notification {
     position: fixed;
-    width: 15%;
-    height: 40%;
-    float: right;
-    top: 10%;
+    width: 100%;
+    height: 100%;
+    top: 0%;
     right: 0;
     margin: auto;
     background-color: rgba(255, 255, 255, 0);
@@ -3197,9 +3196,10 @@ select.stack {
 
 .notification_inner {
     position: absolute;
-    left: 2%;
-    right: 7%;
-    top: 0%;
+    width: 15%;
+    height: 100%;
+    left: 80%;
+    top: 20%;
     bottom: 0%;
     margin: auto;
     border-radius: 10px;

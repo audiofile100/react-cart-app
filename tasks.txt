@@ -51,3 +51,16 @@ Feb. 19
 // Dynamic Notifications To Assist User
 // 1. To Check the number of items added in the Cart
 // 2. If user cancels an order it should it should add one notification that an order has been cancelled and add it to notification row
+
+// Events
+//Calling preventDefault() during any stage of event flow cancels the event, meaning that any default action normally taken by the
+//implementation as a result of the event will not occur. You can use Event. cancelable to check if the event is cancelable. 
+//Calling preventDefault() for a non-cancelable event has no effect
+//
+//The stopPropagation() method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.
+//
+//The stopImmediatePropagation() method of the Event interface prevents other listeners of the same event from being called.
+//If several listeners are attached to the same element for the same event type, they are called in the order in which they were added. 
+//If stopImmediatePropagation() is invoked during one such call, no remaining listeners will be called.
+//
+//return false - stops everything
