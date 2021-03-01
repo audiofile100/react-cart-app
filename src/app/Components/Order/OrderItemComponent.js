@@ -24,13 +24,7 @@ export default class OrderItemComponent extends React.Component {
     }
 
     CancelOrder(orderObj) {
-        /*
-        var date = new Date(orderObj.date);
-        var today = new Date();
-        if (today.setDate(today.getDate() - 2) > date) {
-
-        }
-        */
+        
         this.props.removeOrder(orderObj);
         this.props.saveCancel(orderObj);
     }

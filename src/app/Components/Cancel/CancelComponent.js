@@ -26,8 +26,6 @@ export default class Cancel extends Component {
                 this.props.updateCart(item);
             });
         }
-        //this.props.removeCancel(orderObj);
-        //this.props.addCancel(orderObj);
     }
 
     render() {

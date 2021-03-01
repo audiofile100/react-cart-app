@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, Children} from 'react';
 import {PropTypes} from 'prop-types';
 import {NavLink, useHistory} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import { BsFillBellFill } from 'react-icons/bs';
 
 import DisplayNotificationHooks from '../Components/Notification/DisplayNotificationHooks';
@@ -10,6 +10,7 @@ let Header = (props) => {
     let userName = props.user && props.user.userName ? props.user.userName : "";
     const [showNotifications, showHideNotifications] = useState(false);
     let [count, updateCount] = useState(5);
+
 
     const history = useHistory();
 
@@ -21,11 +22,6 @@ let Header = (props) => {
     const notifications = (e) => {
         e.stopPropagation();
         showHideNotifications(!showNotifications);
-    }
-
-    const handleNotificationClick = (e) => {
-        e.stopPropagation();
-        updateCount(--count);
     }
 
     const cardClick = (title) => {
@@ -74,12 +70,12 @@ let Header = (props) => {
                     <NavLink to="/about" className="button" activeClassName="success">About  </NavLink> */}
                     <NavLink to="/hobby" className="button" activeClassName="success">Hobby</NavLink>
                     { showNotifications ? 
-                    <DisplayNotificationHooks toggle={notifications} clickedCard={cardClick}/>
+                    <DisplayNotificationHooks toggle={notifications} clickedCard={cardClick} />
                     : ""
                     }
                     <div className="logout">
                         <BsFillBellFill className="notification_icon" onClick={notifications} />
-                        <span className={"badge"} onClick={handleNotificationClick}>{count}</span>
+                        <span className={"badge"}>{count}</span>
                         <input type="button" className={"button"} value={"Logout"} onClick={logoutUser} />
                     </div>
                 </React.Fragment>}
