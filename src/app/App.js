@@ -79,7 +79,7 @@ export default class App extends React.Component {
                     <Route path="/cancel" exact component={Cancel} />
                     <Route path="/hobby" exact component={Hobby} />
                 </Switch>
-                <Footer/>
+                <Footer />
             </Router>
         )
     }

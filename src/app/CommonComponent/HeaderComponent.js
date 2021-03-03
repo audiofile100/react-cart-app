@@ -11,7 +11,6 @@ let Header = (props) => {
     const [showNotifications, showHideNotifications] = useState(false);
     let [count, updateCount] = useState(5);
 
-
     const history = useHistory();
 
     let logoutUser = () => {
